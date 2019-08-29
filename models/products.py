@@ -2,7 +2,7 @@ from mongoengine import *
 connect('ishop-2')
 
 
-class Category(EmebeddedDocument):
+class Category(EmbeddedDocument):
     name = StringField(max_length=30, required=True)
     desc = StringField(max_lenght=100)
 
@@ -13,7 +13,7 @@ class Product(Document):
     price = FloatField(required=True)
     stock = IntField(default=1)
     availability = BooleanField(default=True)
-    category = ReferenceField(EmbeddedDocumentField(Category))
+    category = EmbeddedDocumentField(Category)
     seen = IntField(default=0)
 
 
